@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_Locadora.Telas;
 
 namespace Sistema_Locadora
 {
@@ -16,7 +17,7 @@ namespace Sistema_Locadora
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Principal());
         }
     }
 }

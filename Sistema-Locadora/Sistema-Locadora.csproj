@@ -66,18 +66,15 @@
   <ItemGroup>
     <Compile Include="Adicionais\Hash.cs" />
     <Compile Include="Adicionais\ValidaCpf.cs" />
+    <Compile Include="Data\ClienteCrud.cs" />
+    <Compile Include="Data\FilmeCrud.cs" />
+    <Compile Include="Data\LoginCrud.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Filme.cs" />
     <Compile Include="Entities\Locacao.cs" />
     <Compile Include="Entities\Login.cs" />
     <Compile Include="Enums\Generos.cs" />
     <Compile Include="Enums\HelperMethod.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Data\LocadoraContext.cs" />
     <Compile Include="Migrations\202001301441594_First.cs" />
     <Compile Include="Migrations\202001301441594_First.designer.cs">
@@ -86,6 +83,66 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaLogin.Designer.cs">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\EditCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\EditCliente.Designer.cs">
+      <DependentUpon>EditCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\EditFilme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\EditFilme.Designer.cs">
+      <DependentUpon>EditFilme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\EditLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\EditLocacao.Designer.cs">
+      <DependentUpon>EditLocacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormularioCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormularioCliente.Designer.cs">
+      <DependentUpon>FormularioCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormularioFilme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormularioFilme.Designer.cs">
+      <DependentUpon>FormularioFilme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UcCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telas\UcCliente.Designer.cs">
+      <DependentUpon>UcCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UcFilme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telas\UcFilme.Designer.cs">
+      <DependentUpon>UcFilme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UcLocacao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telas\UcLocacao.Designer.cs">
+      <DependentUpon>UcLocacao.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Migrations\202001301441594_First.resx">
       <DependentUpon>202001301441594_First.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,7 +154,38 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TelaLogin.resx">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\EditCliente.resx">
+      <DependentUpon>EditCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\EditFilme.resx">
+      <DependentUpon>EditFilme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\EditLocacao.resx">
+      <DependentUpon>EditLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormularioCliente.resx">
+      <DependentUpon>FormularioCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormularioFilme.resx">
+      <DependentUpon>FormularioFilme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UcCliente.resx">
+      <DependentUpon>UcCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UcFilme.resx">
+      <DependentUpon>UcFilme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UcLocacao.resx">
+      <DependentUpon>UcLocacao.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searching.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movie.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
