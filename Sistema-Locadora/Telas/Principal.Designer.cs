@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnColab = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
             this.btnNovClient = new System.Windows.Forms.Button();
             this.btnNovLoc = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
-            this.ucFilme1 = new Sistema_Locadora.Telas.UcFilme();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ucLocacao1 = new Sistema_Locadora.Telas.UcLocacao();
             this.ucCliente1 = new Sistema_Locadora.Telas.UcCliente();
+            this.ucFilme1 = new Sistema_Locadora.Telas.UcFilme();
             this.sidePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.centerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel
@@ -53,16 +54,6 @@
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(219, 640);
             this.sidePanel.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sistema_Locadora.Properties.Resources.movie;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(213, 127);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnColab
             // 
@@ -121,9 +112,11 @@
             this.btnNovLoc.TabIndex = 0;
             this.btnNovLoc.Text = "&Locação";
             this.btnNovLoc.UseVisualStyleBackColor = false;
+            this.btnNovLoc.Click += new System.EventHandler(this.btnNovLoc_Click);
             // 
             // centerPanel
             // 
+            this.centerPanel.Controls.Add(this.ucLocacao1);
             this.centerPanel.Controls.Add(this.ucCliente1);
             this.centerPanel.Controls.Add(this.ucFilme1);
             this.centerPanel.Location = new System.Drawing.Point(220, 1);
@@ -131,12 +124,22 @@
             this.centerPanel.Size = new System.Drawing.Size(960, 640);
             this.centerPanel.TabIndex = 1;
             // 
-            // ucFilme1
+            // pictureBox1
             // 
-            this.ucFilme1.Location = new System.Drawing.Point(-1, 1);
-            this.ucFilme1.Name = "ucFilme1";
-            this.ucFilme1.Size = new System.Drawing.Size(960, 640);
-            this.ucFilme1.TabIndex = 3;
+            this.pictureBox1.Image = global::Sistema_Locadora.Properties.Resources.movie;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(213, 127);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ucLocacao1
+            // 
+            this.ucLocacao1.Location = new System.Drawing.Point(0, 0);
+            this.ucLocacao1.Name = "ucLocacao1";
+            this.ucLocacao1.Size = new System.Drawing.Size(960, 640);
+            this.ucLocacao1.TabIndex = 5;
             // 
             // ucCliente1
             // 
@@ -145,6 +148,13 @@
             this.ucCliente1.Name = "ucCliente1";
             this.ucCliente1.Size = new System.Drawing.Size(960, 640);
             this.ucCliente1.TabIndex = 4;
+            // 
+            // ucFilme1
+            // 
+            this.ucFilme1.Location = new System.Drawing.Point(-1, 1);
+            this.ucFilme1.Name = "ucFilme1";
+            this.ucFilme1.Size = new System.Drawing.Size(960, 640);
+            this.ucFilme1.TabIndex = 3;
             // 
             // Principal
             // 
@@ -161,8 +171,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.sidePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.centerPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -178,5 +188,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private UcFilme ucFilme1;
         private UcCliente ucCliente1;
+        private UcLocacao ucLocacao1;
     }
 }

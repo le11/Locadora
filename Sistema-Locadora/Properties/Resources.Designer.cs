@@ -63,9 +63,29 @@ namespace Sistema_Locadora.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_filter_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-filter-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap movie {
             get {
                 object obj = ResourceManager.GetObject("movie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_icon_icons_com_74448 {
+            get {
+                object obj = ResourceManager.GetObject("search_icon-icons.com_74448", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

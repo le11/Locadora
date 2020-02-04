@@ -136,7 +136,7 @@
             this.filmesDataGridView.Location = new System.Drawing.Point(19, 202);
             this.filmesDataGridView.Name = "filmesDataGridView";
             this.filmesDataGridView.ReadOnly = true;
-            this.filmesDataGridView.Size = new System.Drawing.Size(917, 414);
+            this.filmesDataGridView.Size = new System.Drawing.Size(911, 414);
             this.filmesDataGridView.TabIndex = 4;
             // 
             // toolStrip1
@@ -213,8 +213,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.filmesDataGridView);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.searchPanel);
             this.Name = "UcFilme";
             this.Size = new System.Drawing.Size(960, 640);

@@ -36,5 +36,10 @@ namespace Sistema_Locadora.Telas
         {
             Environment.Exit(0);
         }
+
+        private void btnNovLoc_Click(object sender, EventArgs e)
+        {
+            ucLocacao1.BringToFront();
+        }
     }
 }
