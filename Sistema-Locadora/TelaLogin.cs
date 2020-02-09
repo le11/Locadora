@@ -17,6 +17,7 @@ namespace Sistema_Locadora
 {
     public partial class TelaLogin : Form
     {
+        Login atualLogin;
         public TelaLogin()
         {
             InitializeComponent();
@@ -24,7 +25,6 @@ namespace Sistema_Locadora
 
         private void TelaLogin_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -50,13 +50,15 @@ namespace Sistema_Locadora
                     }
                     else
                     {
-                        Principal p1 = new Principal();
+                        //Guardando usuario logado
+                        LoginCrud loginCrud = new LoginCrud();
+                        atualLogin = loginCrud.ObterLogin(txtUser.Text);
+                        //
+                        Principal p1 = new Principal(atualLogin);
                         p1.Show();
                         this.Hide();
 
                     }
-
-
                 }
             }
             catch (Exception ex)

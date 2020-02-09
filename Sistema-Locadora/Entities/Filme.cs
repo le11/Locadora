@@ -8,7 +8,7 @@ using Sistema_Locadora.Enums;
 
 namespace Sistema_Locadora.Entities
 {
-    class Filme
+    public class Filme
     {
         [Key]
         public int Codigo { get; set; }

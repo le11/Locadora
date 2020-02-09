@@ -29,31 +29,45 @@
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnColab = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
             this.btnNovClient = new System.Windows.Forms.Button();
             this.btnNovLoc = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.UsuarioLbl = new System.Windows.Forms.Label();
+            this.UsuarioConectadolbl = new System.Windows.Forms.Label();
             this.ucLocacao1 = new Sistema_Locadora.Telas.UcLocacao();
             this.ucCliente1 = new Sistema_Locadora.Telas.UcCliente();
             this.ucFilme1 = new Sistema_Locadora.Telas.UcFilme();
             this.sidePanel.SuspendLayout();
-            this.centerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.centerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidePanel
             // 
+            this.sidePanel.Controls.Add(this.UsuarioConectadolbl);
+            this.sidePanel.Controls.Add(this.UsuarioLbl);
             this.sidePanel.Controls.Add(this.pictureBox1);
             this.sidePanel.Controls.Add(this.btnColab);
             this.sidePanel.Controls.Add(this.btnEstoque);
             this.sidePanel.Controls.Add(this.btnNovClient);
             this.sidePanel.Controls.Add(this.btnNovLoc);
-            this.sidePanel.Location = new System.Drawing.Point(-1, 1);
+            this.sidePanel.Location = new System.Drawing.Point(0, 3);
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(219, 640);
             this.sidePanel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sistema_Locadora.Properties.Resources.movie;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(213, 127);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // btnColab
             // 
@@ -124,15 +138,25 @@
             this.centerPanel.Size = new System.Drawing.Size(960, 640);
             this.centerPanel.TabIndex = 1;
             // 
-            // pictureBox1
+            // UsuarioLbl
             // 
-            this.pictureBox1.Image = global::Sistema_Locadora.Properties.Resources.movie;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(213, 127);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.UsuarioLbl.AutoSize = true;
+            this.UsuarioLbl.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.UsuarioLbl.Location = new System.Drawing.Point(3, 616);
+            this.UsuarioLbl.Name = "UsuarioLbl";
+            this.UsuarioLbl.Size = new System.Drawing.Size(57, 17);
+            this.UsuarioLbl.TabIndex = 5;
+            this.UsuarioLbl.Text = "Usuário:";
+            // 
+            // UsuarioConectadolbl
+            // 
+            this.UsuarioConectadolbl.AutoSize = true;
+            this.UsuarioConectadolbl.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold);
+            this.UsuarioConectadolbl.Location = new System.Drawing.Point(60, 613);
+            this.UsuarioConectadolbl.Name = "UsuarioConectadolbl";
+            this.UsuarioConectadolbl.Size = new System.Drawing.Size(41, 20);
+            this.UsuarioConectadolbl.TabIndex = 6;
+            this.UsuarioConectadolbl.Text = "user";
             // 
             // ucLocacao1
             // 
@@ -171,8 +195,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.sidePanel.ResumeLayout(false);
-            this.centerPanel.ResumeLayout(false);
+            this.sidePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.centerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -189,5 +214,7 @@
         private UcFilme ucFilme1;
         private UcCliente ucCliente1;
         private UcLocacao ucLocacao1;
+        private System.Windows.Forms.Label UsuarioConectadolbl;
+        private System.Windows.Forms.Label UsuarioLbl;
     }
 }

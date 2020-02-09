@@ -15,6 +15,7 @@ namespace Sistema_Locadora.Telas
     public partial class UcLocacao : UserControl
     {
         Filme filmeEscolhido;
+        Login atualLogin;
         public UcLocacao()
         {
             InitializeComponent();
@@ -47,27 +48,26 @@ namespace Sistema_Locadora.Telas
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
-
+            FormularioLocacao formularioLocacao = new FormularioLocacao();
+            formularioLocacao.ShowDialog();
         }
 
         private void filtroFilme_Click(object sender, EventArgs e)
         {
             EscolhaFilme escolhaFilme = new EscolhaFilme();
             escolhaFilme.ShowDialog();
-            int codFilme = Convert.ToInt32(escolhaFilme.retornaFilme());
 
-            FilmeCrud filmeCrud = new FilmeCrud();
-
-            filmeEscolhido = filmeCrud.ObterFilme(codFilme);
+            filmeEscolhido = escolhaFilme.retornaFilme();
             searchLocacaoFilme.Text = filmeEscolhido.Titulo;
         }
 
-       /* private List<Locacao> Busca()
-        {
-            LocadoraContext db = new LocadoraContext();
-            IQueryable<Locacao> query = db.Locacoes;
 
-            
-        }*/
+        /* private List<Locacao> Busca()
+         {
+             LocadoraContext db = new LocadoraContext();
+             IQueryable<Locacao> query = db.Locacoes;
+
+
+         }*/
     }
 }

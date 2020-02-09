@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_Locadora.Enums
 {
-    enum Generos
+    public enum Generos
     {
         [Description("Ação")]
         Acao,

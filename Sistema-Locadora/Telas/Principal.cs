@@ -7,21 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_Locadora.Entities;
+using Sistema_Locadora.Data;
 
 namespace Sistema_Locadora.Telas
 {
     public partial class Principal : Form
     {
-        public Principal()
+        public static Login atualUsuario;
+        public Principal(Login atualLogin)
         {
             InitializeComponent();
+            atualUsuario = atualLogin;
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            UsuarioConectadolbl.Text = atualUsuario.Nome;
         }
-
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             ucFilme1.BringToFront();
@@ -41,5 +44,6 @@ namespace Sistema_Locadora.Telas
         {
             ucLocacao1.BringToFront();
         }
+ 
     }
 }

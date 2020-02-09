@@ -69,6 +69,7 @@
     <Compile Include="Adicionais\ValidaCpf.cs" />
     <Compile Include="Data\ClienteCrud.cs" />
     <Compile Include="Data\FilmeCrud.cs" />
+    <Compile Include="Data\LocacaoCrud.cs" />
     <Compile Include="Data\LoginCrud.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Filme.cs" />
@@ -108,6 +109,12 @@
     <Compile Include="Telas\EditLocacao.Designer.cs">
       <DependentUpon>EditLocacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\EscolhaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\EscolhaCliente.Designer.cs">
+      <DependentUpon>EscolhaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\EscolhaFilme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +132,12 @@
     </Compile>
     <Compile Include="Telas\FormularioFilme.Designer.cs">
       <DependentUpon>FormularioFilme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormularioLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormularioLocacao.Designer.cs">
+      <DependentUpon>FormularioLocacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Principal.cs">
       <SubType>Form</SubType>
@@ -175,6 +188,9 @@
     <EmbeddedResource Include="Telas\EditLocacao.resx">
       <DependentUpon>EditLocacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\EscolhaCliente.resx">
+      <DependentUpon>EscolhaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\EscolhaFilme.resx">
       <DependentUpon>EscolhaFilme.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormularioFilme.resx">
       <DependentUpon>FormularioFilme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormularioLocacao.resx">
+      <DependentUpon>FormularioLocacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

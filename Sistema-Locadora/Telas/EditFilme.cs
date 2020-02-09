@@ -95,5 +95,10 @@ namespace Sistema_Locadora.Telas
                 MessageBox.Show(ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void EditFilme_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

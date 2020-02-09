@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using Sistema_Locadora.Adicionais;
 using Sistema_Locadora.Enums;
 using Sistema_Locadora.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema_Locadora.Entities
 {
-    class Login
+    public class Login
     {
-        [Key]
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Usuario { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }

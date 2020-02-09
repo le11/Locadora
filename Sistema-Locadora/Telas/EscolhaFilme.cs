@@ -51,10 +51,13 @@ namespace Sistema_Locadora.Telas
             this.Hide();
         }
 
-        public string retornaFilme()
+        public Filme retornaFilme()
         {
-            string filmeSelecionado = escolhaFilmeDataGridView.CurrentRow.Cells[0].Value.ToString();
-            return filmeSelecionado;
+            string codFilmeSelecionado = escolhaFilmeDataGridView.CurrentRow.Cells[0].Value.ToString();
+            FilmeCrud filmeCrud = new FilmeCrud();
+
+            return filmeCrud.ObterFilme(Convert.ToInt32(codFilmeSelecionado));
+
         }
     }
 }

@@ -291,6 +291,7 @@
             this.Name = "EditFilme";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditFilme";
+            this.Load += new System.EventHandler(this.EditFilme_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.editQuantidade)).EndInit();
             this.ResumeLayout(false);

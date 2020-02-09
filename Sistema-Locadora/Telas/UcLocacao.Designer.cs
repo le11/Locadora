@@ -178,6 +178,7 @@
             // 
             this.searchLocacaoClient.Location = new System.Drawing.Point(123, 91);
             this.searchLocacaoClient.Name = "searchLocacaoClient";
+            this.searchLocacaoClient.ReadOnly = true;
             this.searchLocacaoClient.Size = new System.Drawing.Size(179, 20);
             this.searchLocacaoClient.TabIndex = 20;
             // 
@@ -195,6 +196,7 @@
             // 
             this.searchLocacaoFilme.Location = new System.Drawing.Point(123, 55);
             this.searchLocacaoFilme.Name = "searchLocacaoFilme";
+            this.searchLocacaoFilme.ReadOnly = true;
             this.searchLocacaoFilme.Size = new System.Drawing.Size(179, 20);
             this.searchLocacaoFilme.TabIndex = 18;
             // 

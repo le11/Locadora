@@ -130,7 +130,7 @@
             // 
             this.nvClientlbl.AutoSize = true;
             this.nvClientlbl.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold);
-            this.nvClientlbl.Location = new System.Drawing.Point(12, 28);
+            this.nvClientlbl.Location = new System.Drawing.Point(12, 18);
             this.nvClientlbl.Name = "nvClientlbl";
             this.nvClientlbl.Size = new System.Drawing.Size(300, 26);
             this.nvClientlbl.TabIndex = 14;
@@ -148,7 +148,7 @@
             this.formularioGroupBox.Controls.Add(this.clientEmail);
             this.formularioGroupBox.Controls.Add(this.AddTelmkTxt);
             this.formularioGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.formularioGroupBox.Location = new System.Drawing.Point(32, 85);
+            this.formularioGroupBox.Location = new System.Drawing.Point(17, 57);
             this.formularioGroupBox.Name = "formularioGroupBox";
             this.formularioGroupBox.Size = new System.Drawing.Size(901, 268);
             this.formularioGroupBox.TabIndex = 24;
@@ -159,7 +159,7 @@
             this.AcceptButton = this.addClientBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 438);
+            this.ClientSize = new System.Drawing.Size(934, 341);
             this.Controls.Add(this.nvClientlbl);
             this.Controls.Add(this.formularioGroupBox);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
