@@ -14,7 +14,9 @@ namespace Sistema_Locadora.Entities
 {
     public class Login
     {
-        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        public int Id { get; set; }
+        [Index(IsUnique = true)]
         public string Usuario { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }

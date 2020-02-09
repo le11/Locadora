@@ -62,16 +62,17 @@ namespace Sistema_Locadora.Telas
                         DataDevolucao = DevolucaodateTimePicker.Value,
                         Colaborador = Principal.atualUsuario
                     };
-                    /*try
+                    try
                     {
-                       if (locacaoCrud.Insert(novaLocacao))
+                        if (locacaoCrud.Insert(novaLocacao))
                         {
                             MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-                    }*/
+                    }
 
                     LocadoraContext db = new LocadoraContext();
                     db.Locacoes.Add(novaLocacao);

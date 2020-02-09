@@ -19,7 +19,7 @@ namespace Sistema_Locadora.Data
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

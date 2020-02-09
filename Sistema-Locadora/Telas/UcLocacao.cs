@@ -62,7 +62,7 @@ namespace Sistema_Locadora.Telas
         }
 
 
-        /* private List<Locacao> Busca()
+        /*private List<Locacao> Busca()
          {
              LocadoraContext db = new LocadoraContext();
              IQueryable<Locacao> query = db.Locacoes;

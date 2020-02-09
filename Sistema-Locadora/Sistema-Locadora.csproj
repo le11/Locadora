@@ -82,6 +82,14 @@
     <Compile Include="Migrations\202001301441594_First.designer.cs">
       <DependentUpon>202001301441594_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002092221144_RemoveLocacao.cs" />
+    <Compile Include="Migrations\202002092221144_RemoveLocacao.designer.cs">
+      <DependentUpon>202002092221144_RemoveLocacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002092229172_ReCreateLocacao.cs" />
+    <Compile Include="Migrations\202002092229172_ReCreateLocacao.designer.cs">
+      <DependentUpon>202002092229172_ReCreateLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -165,6 +173,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202001301441594_First.resx">
       <DependentUpon>202001301441594_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002092221144_RemoveLocacao.resx">
+      <DependentUpon>202002092221144_RemoveLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002092229172_ReCreateLocacao.resx">
+      <DependentUpon>202002092229172_ReCreateLocacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
