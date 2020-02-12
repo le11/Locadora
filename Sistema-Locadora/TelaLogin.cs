@@ -25,6 +25,10 @@ namespace Sistema_Locadora
 
         private void TelaLogin_Load(object sender, EventArgs e)
         {
+           /* LoginCrud crud = new LoginCrud();
+            Login atual = crud.ObterLogin("admin");
+            atual.Nome = "Leticia";
+            crud.Atualizar(crud.ObterLogin("admin"), atual);*/
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)

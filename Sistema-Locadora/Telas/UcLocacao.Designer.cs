@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcLocacao));
             this.locacaoDataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -51,18 +52,24 @@
             this.locacaoDataRetirada = new System.Windows.Forms.Label();
             this.searchLocacaoCod = new System.Windows.Forms.TextBox();
             this.locacaoCod = new System.Windows.Forms.Label();
+            this.locacaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.locacaoDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.searchPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.locacaoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // locacaoDataGridView
             // 
+            this.locacaoDataGridView.AllowUserToAddRows = false;
+            this.locacaoDataGridView.AllowUserToDeleteRows = false;
             this.locacaoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.locacaoDataGridView.Location = new System.Drawing.Point(19, 202);
             this.locacaoDataGridView.Name = "locacaoDataGridView";
+            this.locacaoDataGridView.ReadOnly = true;
             this.locacaoDataGridView.Size = new System.Drawing.Size(917, 414);
             this.locacaoDataGridView.TabIndex = 0;
+            this.locacaoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.locacaoDataGridView_CellContentClick);
             // 
             // toolStrip1
             // 
@@ -78,6 +85,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(960, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // newToolStripButton
             // 
@@ -115,6 +123,7 @@
             this.refreshToolStripButton.Name = "refreshToolStripButton";
             this.refreshToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.refreshToolStripButton.Text = "&Atualizar";
+            this.refreshToolStripButton.Click += new System.EventHandler(this.refreshToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -271,6 +280,10 @@
             this.locacaoCod.TabIndex = 5;
             this.locacaoCod.Text = "Código:";
             // 
+            // locacaoBindingSource
+            // 
+            this.locacaoBindingSource.DataSource = typeof(Sistema_Locadora.Entities.Locacao);
+            // 
             // UcLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +299,7 @@
             this.toolStrip1.PerformLayout();
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.locacaoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,6 +329,7 @@
         private System.Windows.Forms.Label searchLocacaoFilmelbl;
         private System.Windows.Forms.Button filtroFilme;
         private System.Windows.Forms.Button filtroCliente;
+        private System.Windows.Forms.BindingSource locacaoBindingSource;
     }
 }
 

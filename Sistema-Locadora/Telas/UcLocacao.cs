@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_Locadora.Data;
 using Sistema_Locadora.Entities;
+using System.Globalization;
 
 namespace Sistema_Locadora.Telas
 {
@@ -29,7 +30,13 @@ namespace Sistema_Locadora.Telas
         private void CarregaGrid()
         {
             LocadoraContext db = new LocadoraContext();
-            locacaoDataGridView.DataSource = db.Locacoes.ToList();
+
+            var query = from i in db.Locacoes
+                        orderby i.Codigo
+                        select new { i.Codigo, i.Filme.Titulo, Cliente = i.Cliente.Nome, i.Colaborador.Nome, i.DataRetirada, i.DataDevolucao };
+
+            locacaoDataGridView.DataSource = query.ToList();
+
         }
 
         private void searchToolStripButton_Click(object sender, EventArgs e)
@@ -50,6 +57,7 @@ namespace Sistema_Locadora.Telas
         {
             FormularioLocacao formularioLocacao = new FormularioLocacao();
             formularioLocacao.ShowDialog();
+            CarregaGrid();
         }
 
         private void filtroFilme_Click(object sender, EventArgs e)
@@ -59,6 +67,21 @@ namespace Sistema_Locadora.Telas
 
             filmeEscolhido = escolhaFilme.retornaFilme();
             searchLocacaoFilme.Text = filmeEscolhido.Titulo;
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void refreshToolStripButton_Click(object sender, EventArgs e)
+        {
+            CarregaGrid();
+        }
+
+        private void locacaoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 

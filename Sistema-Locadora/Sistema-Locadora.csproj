@@ -82,13 +82,21 @@
     <Compile Include="Migrations\202001301441594_First.designer.cs">
       <DependentUpon>202001301441594_First.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002092221144_RemoveLocacao.cs" />
-    <Compile Include="Migrations\202002092221144_RemoveLocacao.designer.cs">
-      <DependentUpon>202002092221144_RemoveLocacao.cs</DependentUpon>
+    <Compile Include="Migrations\202002121649366_RemoveLocacao.cs" />
+    <Compile Include="Migrations\202002121649366_RemoveLocacao.designer.cs">
+      <DependentUpon>202002121649366_RemoveLocacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002092229172_ReCreateLocacao.cs" />
-    <Compile Include="Migrations\202002092229172_ReCreateLocacao.designer.cs">
-      <DependentUpon>202002092229172_ReCreateLocacao.cs</DependentUpon>
+    <Compile Include="Migrations\202002121749163_RemoveLogin.cs" />
+    <Compile Include="Migrations\202002121749163_RemoveLogin.designer.cs">
+      <DependentUpon>202002121749163_RemoveLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121750240_ReCreateLogin.cs" />
+    <Compile Include="Migrations\202002121750240_ReCreateLogin.designer.cs">
+      <DependentUpon>202002121750240_ReCreateLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121800110_ReCreateLocacao.cs" />
+    <Compile Include="Migrations\202002121800110_ReCreateLocacao.designer.cs">
+      <DependentUpon>202002121800110_ReCreateLocacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -174,11 +182,17 @@
     <EmbeddedResource Include="Migrations\202001301441594_First.resx">
       <DependentUpon>202001301441594_First.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002092221144_RemoveLocacao.resx">
-      <DependentUpon>202002092221144_RemoveLocacao.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002121649366_RemoveLocacao.resx">
+      <DependentUpon>202002121649366_RemoveLocacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002092229172_ReCreateLocacao.resx">
-      <DependentUpon>202002092229172_ReCreateLocacao.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002121749163_RemoveLogin.resx">
+      <DependentUpon>202002121749163_RemoveLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121750240_ReCreateLogin.resx">
+      <DependentUpon>202002121750240_ReCreateLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121800110_ReCreateLocacao.resx">
+      <DependentUpon>202002121800110_ReCreateLocacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -230,6 +244,7 @@
       <DependentUpon>UcLocacao.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Sistema_Locadora.Entities.Locacao.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

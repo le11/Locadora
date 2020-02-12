@@ -56,37 +56,37 @@ namespace Sistema_Locadora.Telas
 
                     Locacao novaLocacao = new Locacao
                     {
-                        Filme = filmeEscolhido,
-                        Cliente = clienteEscolhido,
+                        //Filme = filmeEscolhido,
+                        FilmeId = filmeEscolhido.Codigo,
+
+                        //Cliente = clienteEscolhido,
+                        ClienteId = clienteEscolhido.Codigo,
+
                         DataRetirada = RetiradadateTimePicker.Value,
                         DataDevolucao = DevolucaodateTimePicker.Value,
-                        Colaborador = Principal.atualUsuario
+
+                        //Colaborador = Principal.atualUsuario,
+                        ColaboradorId = Principal.atualUsuario.Codigo
                     };
-                    try
+
+                    if (locacaoCrud.Insert(novaLocacao))
                     {
-                        if (locacaoCrud.Insert(novaLocacao))
-                        {
-                            MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Hide();
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Erro ao inserir!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    LocadoraContext db = new LocadoraContext();
-                    db.Locacoes.Add(novaLocacao);
-                    db.SaveChanges();
-                    db.Dispose();
+
 
                 }
-                else
-                {
-                    return;
-                }
+
             }
 
         }
+
 
         private void filtroCliente_Click(object sender, EventArgs e)
         {

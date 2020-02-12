@@ -8,7 +8,7 @@
         public override void Up()
         {
             CreateTable(
-                "dbo.Clientes",
+                "Clientes",
                 c => new
                     {
                         Codigo = c.Int(nullable: false, identity: true),
@@ -20,7 +20,7 @@
                 .PrimaryKey(t => t.Codigo);
             
             CreateTable(
-                "dbo.Filmes",
+                "Filmes",
                 c => new
                     {
                         Codigo = c.Int(nullable: false, identity: true),
@@ -39,7 +39,7 @@
                 .PrimaryKey(t => t.Codigo);
             
             CreateTable(
-                "dbo.Locacaos",
+                "Locacaos",
                 c => new
                     {
                         Codigo = c.Int(nullable: false, identity: true),
@@ -50,15 +50,15 @@
                         Filme_Codigo = c.Int(),
                     })
                 .PrimaryKey(t => t.Codigo)
-                .ForeignKey("dbo.Clientes", t => t.Cliente_Codigo)
-                .ForeignKey("dbo.Logins", t => t.Colaborador_Usuario)
-                .ForeignKey("dbo.Filmes", t => t.Filme_Codigo)
+                .ForeignKey("Clientes", t => t.Cliente_Codigo)
+                .ForeignKey("Logins", t => t.Colaborador_Usuario)
+                .ForeignKey("Filmes", t => t.Filme_Codigo)
                 .Index(t => t.Cliente_Codigo)
                 .Index(t => t.Colaborador_Usuario)
                 .Index(t => t.Filme_Codigo);
             
             CreateTable(
-                "dbo.Logins",
+                "Logins",
                 c => new
                     {
                         Usuario = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
@@ -74,16 +74,16 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Locacaos", "Filme_Codigo", "dbo.Filmes");
-            DropForeignKey("dbo.Locacaos", "Colaborador_Usuario", "dbo.Logins");
-            DropForeignKey("dbo.Locacaos", "Cliente_Codigo", "dbo.Clientes");
-            DropIndex("dbo.Locacaos", new[] { "Filme_Codigo" });
-            DropIndex("dbo.Locacaos", new[] { "Colaborador_Usuario" });
-            DropIndex("dbo.Locacaos", new[] { "Cliente_Codigo" });
-            DropTable("dbo.Logins");
-            DropTable("dbo.Locacaos");
-            DropTable("dbo.Filmes");
-            DropTable("dbo.Clientes");
+            DropForeignKey("Locacaos", "Filme_Codigo", "Filmes");
+            DropForeignKey("Locacaos", "Colaborador_Usuario", "Logins");
+            DropForeignKey("Locacaos", "Cliente_Codigo", "Clientes");
+            DropIndex("Locacaos", new[] { "Filme_Codigo" });
+            DropIndex("Locacaos", new[] { "Colaborador_Usuario" });
+            DropIndex("Locacaos", new[] { "Cliente_Codigo" });
+            DropTable("Logins");
+            DropTable("Locacaos");
+            DropTable("Filmes");
+            DropTable("Clientes");
         }
     }
 }

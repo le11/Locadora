@@ -7,13 +7,13 @@ namespace Sistema_Locadora.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class RemoveLocacao : IMigrationMetadata
+    public sealed partial class ReCreateLogin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveLocacao));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ReCreateLogin));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002092221144_RemoveLocacao"; }
+            get { return "202002121750240_ReCreateLogin"; }
         }
         
         string IMigrationMetadata.Source

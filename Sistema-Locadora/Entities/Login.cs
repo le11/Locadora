@@ -15,8 +15,7 @@ namespace Sistema_Locadora.Entities
     public class Login
     {
         [Key]
-        public int Id { get; set; }
-        [Index(IsUnique = true)]
+        public int Codigo { get; set; }
         public string Usuario { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }
