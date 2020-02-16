@@ -84,6 +84,66 @@ namespace Sistema_Locadora.Telas
 
         }
 
+        private void deleteToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int linhaSelecionada = Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
+                LocacaoCrud crud = new LocacaoCrud();
+                Locacao atual = crud.ObterLocacao(linhaSelecionada);
+
+                if (MessageBox.Show("Confirma a exclusão desta locação?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (crud.Delete(linhaSelecionada))
+                    {
+                        //buscando o filme que foi locado
+                        FilmeCrud filmeCrud = new FilmeCrud();
+                        Filme locFilme = filmeCrud.ObterFilme(atual.FilmeId);
+                        //
+
+                        Filme novoFilme = new Filme
+                        {
+                            Quantidade = locFilme.Quantidade + 1,
+                            Locado = locFilme.Locado - 1,
+                            Titulo = locFilme.Titulo,
+                            Titulo_Original = locFilme.Titulo_Original,
+                            AnoDeProducao = locFilme.AnoDeProducao,
+                            Ator_Principal = locFilme.Ator_Principal,
+                            Classificacao = locFilme.Classificacao,
+                            Fornecedor = locFilme.Fornecedor,
+                            Idioma = locFilme.Idioma,
+                            Legenda = locFilme.Legenda,
+                            Localizacao = locFilme.Localizacao,
+                            Genero = locFilme.Genero
+                        };
+
+                        //atualizando a quantidade do filme em estoque
+                        filmeCrud.Atualizar(locFilme, novoFilme);
+                        //
+                        MessageBox.Show("Locação excluída!");
+                        CarregaGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         /*private List<Locacao> Busca()
          {

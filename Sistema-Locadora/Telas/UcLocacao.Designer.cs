@@ -114,6 +114,7 @@
             this.deleteToolStripButton.Name = "deleteToolStripButton";
             this.deleteToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.deleteToolStripButton.Text = "&Excluir";
+            this.deleteToolStripButton.Click += new System.EventHandler(this.deleteToolStripButton_Click);
             // 
             // refreshToolStripButton
             // 
@@ -245,6 +246,7 @@
             this.searchButton.Size = new System.Drawing.Size(40, 35);
             this.searchButton.TabIndex = 4;
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchDataRetirada
             // 

@@ -23,7 +23,15 @@ namespace Sistema_Locadora.Telas
             escolhaFilme.ShowDialog();
 
             filmeEscolhido = escolhaFilme.retornaFilme();
-            addFilmeTxt.Text = filmeEscolhido.Titulo;
+            if (podeLocar(filmeEscolhido))
+            {
+                addFilmeTxt.Text = filmeEscolhido.Titulo;
+            }
+            else
+            {
+                MessageBox.Show("Não há unidade deste filme em estoque");
+                return;
+            }
         }
 
         private bool camposPreenchidos()
@@ -59,10 +67,10 @@ namespace Sistema_Locadora.Telas
                         //Filme = filmeEscolhido,
                         FilmeId = filmeEscolhido.Codigo,
 
-                        //Cliente = clienteEscolhido,
+                       // Cliente = clienteEscolhido,
                         ClienteId = clienteEscolhido.Codigo,
 
-                        DataRetirada = RetiradadateTimePicker.Value,
+                        //DataRetirada = RetiradadateTimePicker.Value,
                         DataDevolucao = DevolucaodateTimePicker.Value,
 
                         //Colaborador = Principal.atualUsuario,
@@ -71,16 +79,36 @@ namespace Sistema_Locadora.Telas
 
                     if (locacaoCrud.Insert(novaLocacao))
                     {
-                        MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Hide();
+                        FilmeCrud filmeCrud = new FilmeCrud();
+                        Filme editFilme = new Filme()
+                        {
+                            Codigo = filmeEscolhido.Codigo,
+                            Titulo = filmeEscolhido.Titulo,
+                            AnoDeProducao = filmeEscolhido.AnoDeProducao,
+                            Titulo_Original = filmeEscolhido.Titulo_Original,
+                            Ator_Principal = filmeEscolhido.Ator_Principal,
+                            Classificacao = filmeEscolhido.Classificacao,
+                            Fornecedor = filmeEscolhido.Fornecedor,
+                            Genero = filmeEscolhido.Genero,
+                            Idioma = filmeEscolhido.Idioma,
+                            Legenda = filmeEscolhido.Legenda,
+                            Localizacao = filmeEscolhido.Localizacao,
+                            Quantidade = filmeEscolhido.Quantidade - 1,
+                            Locado = filmeEscolhido.Locado + 1,
+                        };
+                        if (filmeCrud.Atualizar(filmeEscolhido, editFilme))
+                        {
+                            MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao inserir!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Erro ao inserir!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-
-
                 }
 
             }
@@ -96,6 +124,18 @@ namespace Sistema_Locadora.Telas
             clienteEscolhido = escolhaCliente.retornaCliente();
 
             addClientTxt.Text = clienteEscolhido.Nome;
+        }
+
+        private bool podeLocar(Filme filme)
+        {
+            if (filme.Quantidade > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void FormularioLocacao_Load(object sender, EventArgs e)

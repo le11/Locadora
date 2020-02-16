@@ -79,6 +79,7 @@ namespace Sistema_Locadora.Data
                 vFilme.Titulo = nFilme.Titulo;
                 vFilme.Titulo_Original = nFilme.Titulo_Original;
                 vFilme.Genero = nFilme.Genero;
+                vFilme.Locado = nFilme.Locado;
 
                 db.Entry(vFilme).State = EntityState.Modified;
                 db.SaveChanges();

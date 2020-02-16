@@ -84,7 +84,7 @@ namespace Sistema_Locadora.Data
             }
         }
 
-        public Locacao ObterFilme(int codLocacao)
+        public Locacao ObterLocacao(int codLocacao)
         {
             try
             {

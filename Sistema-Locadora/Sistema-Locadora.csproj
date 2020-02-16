@@ -98,6 +98,10 @@
     <Compile Include="Migrations\202002121800110_ReCreateLocacao.designer.cs">
       <DependentUpon>202002121800110_ReCreateLocacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002130851264_FilmeLocado.cs" />
+    <Compile Include="Migrations\202002130851264_FilmeLocado.designer.cs">
+      <DependentUpon>202002130851264_FilmeLocado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121800110_ReCreateLocacao.resx">
       <DependentUpon>202002121800110_ReCreateLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002130851264_FilmeLocado.resx">
+      <DependentUpon>202002130851264_FilmeLocado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

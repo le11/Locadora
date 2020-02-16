@@ -60,12 +60,19 @@ namespace Sistema_Locadora.Telas
             {
                 int linhaSelecionada = Convert.ToInt32(filmesDataGridView.CurrentRow.Cells[0].Value.ToString());
                 FilmeCrud crud = new FilmeCrud();
+                Filme exclusao = crud.ObterFilme(linhaSelecionada);
 
                 if (MessageBox.Show("Confirma a exclusão do filme?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (crud.Delete(linhaSelecionada))
+                    if (exclusao.Locado > 0)
                     {
-                        MessageBox.Show("Filme deletado!");
+                        MessageBox.Show("Este filme está registrado em locações", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    else if (crud.Delete(linhaSelecionada))
+                    {
+                        MessageBox.Show("Filme excluído!");
                         CarregaGrid();
                     }
                     else
@@ -77,7 +84,6 @@ namespace Sistema_Locadora.Telas
                 {
                     return;
                 }
-
             }
             catch (Exception ex)
             {

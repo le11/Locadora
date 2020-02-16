@@ -22,6 +22,7 @@ namespace Sistema_Locadora.Entities
         public string Classificacao { get; set; }
         public Generos Genero { get; set; }
         public int Quantidade { get; set; }
+        public int Locado { get; set; }
         public string Localizacao { get; set; }
     }
 }

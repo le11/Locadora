@@ -14,13 +14,13 @@ namespace Sistema_Locadora.Entities
         public int Codigo { get; set; }
         public int FilmeId { get; set; }
         [ForeignKey("FilmeId")]
-        public Filme Filme { get; set; }
+        public virtual Filme Filme { get; set; }
         public int ClienteId { get; set; }
         [ForeignKey("ClienteId")]
-        public Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
         public int ColaboradorId { get; set; }
         [ForeignKey("ColaboradorId")]
-        public Login Colaborador { get; set; }
+        public virtual Login Colaborador { get; set; }
         public DateTime DataRetirada { get; set; }
         public DateTime DataDevolucao { get; set; }
     }
