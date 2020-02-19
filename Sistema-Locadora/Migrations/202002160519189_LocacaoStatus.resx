@@ -117,26 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="searching" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\searching.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\movie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search_icon-icons.com_74448" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search_icon-icons.com_74448.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-filter-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-filter-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="circulo-amarelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\circulo-amarelo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="circulo-verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\circulo-verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="circulo-preto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\circulo-preto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

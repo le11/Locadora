@@ -1,0 +1,18 @@
+﻿namespace Sistema_Locadora.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class LocacaoStatus : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("Locacaos", "Status", c => c.String(unicode: false));
+        }
+        
+        public override void Down()
+        {
+            DropColumn("Locacaos", "Status");
+        }
+    }
+}

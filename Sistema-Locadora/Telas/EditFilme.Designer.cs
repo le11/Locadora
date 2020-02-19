@@ -262,7 +262,7 @@
             this.AcceptButton = this.EditConfirm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 338);
+            this.ClientSize = new System.Drawing.Size(919, 329);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.idiomaTextBox);

@@ -20,6 +20,7 @@ namespace Sistema_Locadora.Telas
         public UcLocacao()
         {
             InitializeComponent();
+
         }
 
         private void UcLocacao_Load(object sender, EventArgs e)
@@ -33,10 +34,9 @@ namespace Sistema_Locadora.Telas
 
             var query = from i in db.Locacoes
                         orderby i.Codigo
-                        select new { i.Codigo, i.Filme.Titulo, Cliente = i.Cliente.Nome, i.Colaborador.Nome, i.DataRetirada, i.DataDevolucao };
+                        select new { i.Codigo, i.Filme.Titulo, Cliente = i.Cliente.Nome, i.Colaborador.Nome, i.DataRetirada, i.DataPrevDevolucao, i.Devolucao, i.Status };
 
             locacaoDataGridView.DataSource = query.ToList();
-
         }
 
         private void searchToolStripButton_Click(object sender, EventArgs e)
@@ -66,22 +66,19 @@ namespace Sistema_Locadora.Telas
             escolhaFilme.ShowDialog();
 
             filmeEscolhido = escolhaFilme.retornaFilme();
-            searchLocacaoFilme.Text = filmeEscolhido.Titulo;
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+            if (filmeEscolhido != null)
+            {
+                searchLocacaoFilme.Text = filmeEscolhido.Titulo;
+            }
+            /*else
+            {
+                searchLocacaoFilme.Text = null;
+            }*/
         }
 
         private void refreshToolStripButton_Click(object sender, EventArgs e)
         {
             CarregaGrid();
-        }
-
-        private void locacaoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void deleteToolStripButton_Click(object sender, EventArgs e)
@@ -138,19 +135,153 @@ namespace Sistema_Locadora.Telas
                 MessageBox.Show(ex.Message);
             }
         }
+        private Locacao locacaoSelecionada()
+        {
+            LocacaoCrud crud = new LocacaoCrud();
+            Locacao locacao = crud.ObterLocacao(Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString()));
+            return locacao;
+        }
+
+        private void locacaoDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value.Equals("Locado"))
+            {
+                e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+            }
+            else if (e.Value.Equals("Cancelado"))
+            {
+                e.CellStyle.BackColor = Color.Gray;
+            }
+            else if (e.Value.Equals("Concluido"))
+            {
+                e.CellStyle.BackColor = Color.Green;
+            }
+        }
+
+        private void concluidoBtnToolStip_Click(object sender, EventArgs e)
+        {
+            if (locacaoSelecionada().Status == "Cancelado")
+            {
+                MessageBox.Show("Registro de locação já foi cancelado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (locacaoSelecionada().Status == "Concluido")
+            {
+                return;
+            }
+            else
+            {
+                if (MessageBox.Show("Confirma mudança de status para CONCLUÍDO?", "Confirmação de mudança", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    LocacaoCrud crud = new LocacaoCrud();
+                    Locacao locSelecionada = locacaoSelecionada();
+                    _ = new Locacao();
+                    Locacao mudaStatus = locSelecionada;
+                    mudaStatus.Status = "Concluido";
+                    mudaStatus.Devolucao = DateTime.Now;
+                    if (crud.Atualizar(locSelecionada, mudaStatus))
+                    {
+                        MessageBox.Show("Status alterado");
+                        CarregaGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        private void canceladoBtnToolStrip_Click(object sender, EventArgs e)
+        {
+            if (locacaoSelecionada().Status == "Cancelado")
+            {
+                return;
+            }
+            else
+            {
+                if (MessageBox.Show("Confirma mudança de status para CANCELADO?", "Confirmação de mudança", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    LocacaoCrud crud = new LocacaoCrud();
+                    int linhaSelecionada = Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
+                    Locacao locSelecionada = crud.ObterLocacao(linhaSelecionada);
+                    Locacao mudaStatus = new Locacao();
+                    mudaStatus = locSelecionada;
+                    mudaStatus.Status = "Cancelado";
+                    if (crud.Atualizar(locSelecionada, mudaStatus))
+                    {
+                        MessageBox.Show("Status alterado");
+                        CarregaGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        private List<Locacao> Busca()
+        {
+            LocadoraContext db = new LocadoraContext();
+            IQueryable<Locacao> query = db.Locacoes;
+
+            if (!string.IsNullOrEmpty(searchDataDevolucao.Text))
+            {
+                query = query.Where(n => n.DataPrevDevolucao.ToString().Contains(searchDataDevolucao.Text));
+            }
+
+            if (!string.IsNullOrEmpty(searchDataRetirada.Text))
+            {
+                query = query.Where(n => n.DataRetirada.ToString().Contains(searchDataRetirada.Text));
+            }
+
+            if (!string.IsNullOrEmpty(searchLocacaoClient.Text))
+            {
+                query = query.Where(n => n.Cliente.ToString().ToUpper().Contains(searchLocacaoClient.Text));
+            }
+
+            if (!string.IsNullOrEmpty(searchLocacaoFilme.Text))
+            {
+                query = query.Where(n => n.Filme.ToString().ToUpper().Contains(searchLocacaoFilme.Text));
+            }
+
+            if (!string.IsNullOrEmpty(searchStatuscomboBox.SelectedItem.ToString()))
+            {
+                query = query.Where(n => n.Status.ToUpper().Contains(searchStatuscomboBox.SelectedItem.ToString()));
+            }
+
+            if (!string.IsNullOrEmpty(searchLocacaoCod.Text))
+            {
+                query = query.Where(n => n.Codigo.ToString().Contains(searchLocacaoCod.Text));
+            }
+
+            List<Locacao> resultado = query.ToList();
+
+            return resultado;
+        }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-
+            locacaoDataGridView.DataSource = Busca();
         }
-
-
-        /*private List<Locacao> Busca()
-         {
-             LocadoraContext db = new LocadoraContext();
-             IQueryable<Locacao> query = db.Locacoes;
-
-
-         }*/
     }
 }
+/*private List<Locacao> Busca()
+{
+LocadoraContext db = new LocadoraContext();
+IQueryable<Locacao> query = db.Locacoes;
+
+
+}*/
+
+

@@ -67,7 +67,7 @@ namespace Sistema_Locadora.Data
                 LocadoraContext db = new LocadoraContext();
 
 
-                vLocacao.DataDevolucao = nLocacao.DataDevolucao;
+                vLocacao.DataPrevDevolucao = nLocacao.DataPrevDevolucao;
                 vLocacao.DataRetirada = nLocacao.DataRetirada;
                 vLocacao.Colaborador = nLocacao.Colaborador;
                 vLocacao.Filme = nLocacao.Filme;

@@ -22,6 +22,8 @@ namespace Sistema_Locadora.Entities
         [ForeignKey("ColaboradorId")]
         public virtual Login Colaborador { get; set; }
         public DateTime DataRetirada { get; set; }
-        public DateTime DataDevolucao { get; set; }
+        public DateTime DataPrevDevolucao { get; set; }
+        public DateTime Devolucao { get; set; }
+        public string Status { get; set; }
     }
 }

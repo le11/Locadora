@@ -67,14 +67,16 @@ namespace Sistema_Locadora.Telas
                         //Filme = filmeEscolhido,
                         FilmeId = filmeEscolhido.Codigo,
 
-                       // Cliente = clienteEscolhido,
+                        // Cliente = clienteEscolhido,
                         ClienteId = clienteEscolhido.Codigo,
 
-                        //DataRetirada = RetiradadateTimePicker.Value,
-                        DataDevolucao = DevolucaodateTimePicker.Value,
+                        DataRetirada = RetiradadateTimePicker.Value,
+                        DataPrevDevolucao = DevolucaodateTimePicker.Value,
 
                         //Colaborador = Principal.atualUsuario,
-                        ColaboradorId = Principal.atualUsuario.Codigo
+                        ColaboradorId = Principal.atualUsuario.Codigo,
+
+                        Status = statusComboBox.Text.ToString()
                     };
 
                     if (locacaoCrud.Insert(novaLocacao))
@@ -99,6 +101,7 @@ namespace Sistema_Locadora.Telas
                         if (filmeCrud.Atualizar(filmeEscolhido, editFilme))
                         {
                             MessageBox.Show("Locação inserida!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Hide();
                         }
                         else
                         {
