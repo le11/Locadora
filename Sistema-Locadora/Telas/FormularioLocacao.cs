@@ -67,7 +67,7 @@ namespace Sistema_Locadora.Telas
                         //Filme = filmeEscolhido,
                         FilmeId = filmeEscolhido.Codigo,
 
-                        // Cliente = clienteEscolhido,
+                        //Cliente = clienteEscolhido,
                         ClienteId = clienteEscolhido.Codigo,
 
                         DataRetirada = RetiradadateTimePicker.Value,

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcLocacao));
             this.locacaoDataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -43,7 +43,8 @@
             this.concluidoBtnToolStip = new System.Windows.Forms.ToolStripButton();
             this.canceladoBtnToolStrip = new System.Windows.Forms.ToolStripButton();
             this.searchPanel = new System.Windows.Forms.Panel();
-            this.filtroCliente = new System.Windows.Forms.Button();
+            this.searchStatuscomboBox = new System.Windows.Forms.ComboBox();
+            this.searchLocacaoStatus = new System.Windows.Forms.Label();
             this.filtroFilme = new System.Windows.Forms.Button();
             this.searchLocacaoClient = new System.Windows.Forms.TextBox();
             this.clientLblLocacao = new System.Windows.Forms.Label();
@@ -57,8 +58,6 @@
             this.searchLocacaoCod = new System.Windows.Forms.TextBox();
             this.locacaoCod = new System.Windows.Forms.Label();
             this.locacaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchLocacaoStatus = new System.Windows.Forms.Label();
-            this.searchStatuscomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.locacaoDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.searchPanel.SuspendLayout();
@@ -69,28 +68,29 @@
             // 
             this.locacaoDataGridView.AllowUserToAddRows = false;
             this.locacaoDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.locacaoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.locacaoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.locacaoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.locacaoDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.locacaoDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.locacaoDataGridView.Location = new System.Drawing.Point(19, 202);
             this.locacaoDataGridView.Name = "locacaoDataGridView";
             this.locacaoDataGridView.ReadOnly = true;
             this.locacaoDataGridView.Size = new System.Drawing.Size(917, 414);
             this.locacaoDataGridView.TabIndex = 0;
+            this.locacaoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.locacaoDataGridView_CellContentClick);
             this.locacaoDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.locacaoDataGridView_CellFormatting);
             // 
             // toolStrip1
@@ -124,6 +124,7 @@
             // editToolStripButton
             // 
             this.editToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editToolStripButton.Enabled = false;
             this.editToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripButton.Image")));
             this.editToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editToolStripButton.Name = "editToolStripButton";
@@ -191,7 +192,6 @@
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchPanel.Controls.Add(this.searchStatuscomboBox);
             this.searchPanel.Controls.Add(this.searchLocacaoStatus);
-            this.searchPanel.Controls.Add(this.filtroCliente);
             this.searchPanel.Controls.Add(this.filtroFilme);
             this.searchPanel.Controls.Add(this.searchLocacaoClient);
             this.searchPanel.Controls.Add(this.clientLblLocacao);
@@ -210,15 +210,29 @@
             this.searchPanel.Size = new System.Drawing.Size(909, 146);
             this.searchPanel.TabIndex = 7;
             // 
-            // filtroCliente
+            // searchStatuscomboBox
             // 
-            this.filtroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.filtroCliente.Location = new System.Drawing.Point(309, 91);
-            this.filtroCliente.Name = "filtroCliente";
-            this.filtroCliente.Size = new System.Drawing.Size(26, 20);
-            this.filtroCliente.TabIndex = 23;
-            this.filtroCliente.Text = "...";
-            this.filtroCliente.UseVisualStyleBackColor = true;
+            this.searchStatuscomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchStatuscomboBox.FormattingEnabled = true;
+            this.searchStatuscomboBox.Items.AddRange(new object[] {
+            "",
+            "Locado",
+            "Concluido",
+            "Cancelado"});
+            this.searchStatuscomboBox.Location = new System.Drawing.Point(604, 89);
+            this.searchStatuscomboBox.Name = "searchStatuscomboBox";
+            this.searchStatuscomboBox.Size = new System.Drawing.Size(179, 21);
+            this.searchStatuscomboBox.TabIndex = 25;
+            // 
+            // searchLocacaoStatus
+            // 
+            this.searchLocacaoStatus.AutoSize = true;
+            this.searchLocacaoStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchLocacaoStatus.Location = new System.Drawing.Point(449, 94);
+            this.searchLocacaoStatus.Name = "searchLocacaoStatus";
+            this.searchLocacaoStatus.Size = new System.Drawing.Size(59, 17);
+            this.searchLocacaoStatus.TabIndex = 24;
+            this.searchLocacaoStatus.Text = "Status:";
             // 
             // filtroFilme
             // 
@@ -235,7 +249,6 @@
             // 
             this.searchLocacaoClient.Location = new System.Drawing.Point(123, 91);
             this.searchLocacaoClient.Name = "searchLocacaoClient";
-            this.searchLocacaoClient.ReadOnly = true;
             this.searchLocacaoClient.Size = new System.Drawing.Size(179, 20);
             this.searchLocacaoClient.TabIndex = 20;
             // 
@@ -253,7 +266,6 @@
             // 
             this.searchLocacaoFilme.Location = new System.Drawing.Point(123, 55);
             this.searchLocacaoFilme.Name = "searchLocacaoFilme";
-            this.searchLocacaoFilme.ReadOnly = true;
             this.searchLocacaoFilme.Size = new System.Drawing.Size(179, 20);
             this.searchLocacaoFilme.TabIndex = 18;
             // 
@@ -329,29 +341,6 @@
             this.locacaoCod.TabIndex = 5;
             this.locacaoCod.Text = "Código:";
             // 
-            // searchLocacaoStatus
-            // 
-            this.searchLocacaoStatus.AutoSize = true;
-            this.searchLocacaoStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLocacaoStatus.Location = new System.Drawing.Point(449, 94);
-            this.searchLocacaoStatus.Name = "searchLocacaoStatus";
-            this.searchLocacaoStatus.Size = new System.Drawing.Size(59, 17);
-            this.searchLocacaoStatus.TabIndex = 24;
-            this.searchLocacaoStatus.Text = "Status:";
-            // 
-            // searchStatuscomboBox
-            // 
-            this.searchStatuscomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchStatuscomboBox.FormattingEnabled = true;
-            this.searchStatuscomboBox.Items.AddRange(new object[] {
-            "Locado",
-            "Concluido",
-            "Cancelado"});
-            this.searchStatuscomboBox.Location = new System.Drawing.Point(604, 89);
-            this.searchStatuscomboBox.Name = "searchStatuscomboBox";
-            this.searchStatuscomboBox.Size = new System.Drawing.Size(179, 21);
-            this.searchStatuscomboBox.TabIndex = 25;
-            // 
             // UcLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +386,6 @@
         private System.Windows.Forms.TextBox searchLocacaoFilme;
         private System.Windows.Forms.Label searchLocacaoFilmelbl;
         private System.Windows.Forms.Button filtroFilme;
-        private System.Windows.Forms.Button filtroCliente;
         private System.Windows.Forms.BindingSource locacaoBindingSource;
         private System.Windows.Forms.ToolStripButton concluidoBtnToolStip;
         private System.Windows.Forms.ToolStripButton canceladoBtnToolStrip;

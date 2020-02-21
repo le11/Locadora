@@ -25,10 +25,8 @@ namespace Sistema_Locadora
 
         private void TelaLogin_Load(object sender, EventArgs e)
         {
-           /* LoginCrud crud = new LoginCrud();
-            Login atual = crud.ObterLogin("admin");
-            atual.Nome = "Leticia";
-            crud.Atualizar(crud.ObterLogin("admin"), atual);*/
+            // this.BackColor = Color.FromArgb(53, 64, 81);
+            this.BackColor = Color.AliceBlue;
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_Locadora.Data;
 using Sistema_Locadora.Entities;
-using System.Globalization;
+
 
 namespace Sistema_Locadora.Telas
 {
@@ -28,13 +25,15 @@ namespace Sistema_Locadora.Telas
             locacaoDataGridView.SetBounds(24, 50, 911, 566);
             CarregaGrid();
         }
+
+
         private void CarregaGrid()
         {
             LocadoraContext db = new LocadoraContext();
 
             var query = from i in db.Locacoes
                         orderby i.Codigo
-                        select new { i.Codigo, i.Filme.Titulo, Cliente = i.Cliente.Nome, i.Colaborador.Nome, i.DataRetirada, i.DataPrevDevolucao, i.Devolucao, i.Status };
+                        select new { i.Codigo, Filme = i.Filme.Titulo, Cliente = i.Cliente.Nome, Colaborador = i.Colaborador.Nome, Data_de_Retirada = i.DataRetirada, Data_Prevista_Devolucao = i.DataPrevDevolucao, i.Devolucao, i.Status };
 
             locacaoDataGridView.DataSource = query.ToList();
         }
@@ -98,25 +97,7 @@ namespace Sistema_Locadora.Telas
                         Filme locFilme = filmeCrud.ObterFilme(atual.FilmeId);
                         //
 
-                        Filme novoFilme = new Filme
-                        {
-                            Quantidade = locFilme.Quantidade + 1,
-                            Locado = locFilme.Locado - 1,
-                            Titulo = locFilme.Titulo,
-                            Titulo_Original = locFilme.Titulo_Original,
-                            AnoDeProducao = locFilme.AnoDeProducao,
-                            Ator_Principal = locFilme.Ator_Principal,
-                            Classificacao = locFilme.Classificacao,
-                            Fornecedor = locFilme.Fornecedor,
-                            Idioma = locFilme.Idioma,
-                            Legenda = locFilme.Legenda,
-                            Localizacao = locFilme.Localizacao,
-                            Genero = locFilme.Genero
-                        };
-
-                        //atualizando a quantidade do filme em estoque
-                        filmeCrud.Atualizar(locFilme, novoFilme);
-                        //
+                        filmeRetornou(atual);
                         MessageBox.Show("Locação excluída!");
                         CarregaGrid();
                     }
@@ -175,11 +156,12 @@ namespace Sistema_Locadora.Telas
                 {
                     LocacaoCrud crud = new LocacaoCrud();
                     Locacao locSelecionada = locacaoSelecionada();
-                    _ = new Locacao();
                     Locacao mudaStatus = locSelecionada;
                     mudaStatus.Status = "Concluido";
                     mudaStatus.Devolucao = DateTime.Now;
-                    if (crud.Atualizar(locSelecionada, mudaStatus))
+
+
+                    if (crud.Atualizar(locSelecionada, mudaStatus) && filmeRetornou(locSelecionada))
                     {
                         MessageBox.Show("Status alterado");
                         CarregaGrid();
@@ -199,28 +181,68 @@ namespace Sistema_Locadora.Telas
 
         private void canceladoBtnToolStrip_Click(object sender, EventArgs e)
         {
-            if (locacaoSelecionada().Status == "Cancelado")
+            try
             {
-                return;
-            }
-            else
-            {
-                if (MessageBox.Show("Confirma mudança de status para CANCELADO?", "Confirmação de mudança", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (locacaoSelecionada().Status == "Locado")
                 {
-                    LocacaoCrud crud = new LocacaoCrud();
-                    int linhaSelecionada = Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
-                    Locacao locSelecionada = crud.ObterLocacao(linhaSelecionada);
-                    Locacao mudaStatus = new Locacao();
-                    mudaStatus = locSelecionada;
-                    mudaStatus.Status = "Cancelado";
-                    if (crud.Atualizar(locSelecionada, mudaStatus))
+                    if (MessageBox.Show("Confirma mudança de status para CANCELADO?", "Confirmação de mudança", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        MessageBox.Show("Status alterado");
-                        CarregaGrid();
+                        LocacaoCrud crud = new LocacaoCrud();
+                        int linhaSelecionada = Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
+                        Locacao locSelecionada = crud.ObterLocacao(linhaSelecionada);
+                        Locacao mudaStatus = new Locacao();
+                        mudaStatus = locSelecionada;
+                        mudaStatus.Status = "Cancelado";
+
+
+                        if (filmeRetornou(locSelecionada))
+                        {
+                            if (crud.Atualizar(locSelecionada, mudaStatus))
+                            {
+                                MessageBox.Show("Status alterado");
+                                CarregaGrid();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não há unidades locadas", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else if (locacaoSelecionada().Status == "Concluido")
+                {
+                    if (MessageBox.Show("Confirma mudança de status para CANCELADO?", "Confirmação de mudança", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        LocacaoCrud crud = new LocacaoCrud();
+                        int linhaSelecionada = Convert.ToInt32(locacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
+                        Locacao locSelecionada = crud.ObterLocacao(linhaSelecionada);
+                        Locacao mudaStatus = new Locacao();
+                        mudaStatus = locSelecionada;
+                        mudaStatus.Status = "Cancelado";
+
+                        if (crud.Atualizar(locSelecionada, mudaStatus))
+                        {
+                            MessageBox.Show("Status alterado");
+                            CarregaGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
                 else
@@ -228,12 +250,17 @@ namespace Sistema_Locadora.Telas
                     return;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
         private List<Locacao> Busca()
         {
             LocadoraContext db = new LocadoraContext();
             IQueryable<Locacao> query = db.Locacoes;
+
+
 
             if (!string.IsNullOrEmpty(searchDataDevolucao.Text))
             {
@@ -247,22 +274,23 @@ namespace Sistema_Locadora.Telas
 
             if (!string.IsNullOrEmpty(searchLocacaoClient.Text))
             {
-                query = query.Where(n => n.Cliente.ToString().ToUpper().Contains(searchLocacaoClient.Text));
+                query = query.Where(n => n.Cliente.Nome.ToUpper().ToString().Contains(searchLocacaoClient.Text.ToUpper().ToString()));
             }
 
             if (!string.IsNullOrEmpty(searchLocacaoFilme.Text))
             {
-                query = query.Where(n => n.Filme.ToString().ToUpper().Contains(searchLocacaoFilme.Text));
+                query = query.Where(n => n.Filme.Titulo.ToUpper().ToString().Contains(searchLocacaoFilme.Text.ToUpper().ToString()));
             }
 
-            if (!string.IsNullOrEmpty(searchStatuscomboBox.SelectedItem.ToString()))
+            if (!string.IsNullOrEmpty(searchStatuscomboBox.Text))
             {
-                query = query.Where(n => n.Status.ToUpper().Contains(searchStatuscomboBox.SelectedItem.ToString()));
+                query = query.Where(n => n.Status.ToUpper().Contains(searchStatuscomboBox.Text.ToString().ToUpper()));
             }
 
             if (!string.IsNullOrEmpty(searchLocacaoCod.Text))
             {
-                query = query.Where(n => n.Codigo.ToString().Contains(searchLocacaoCod.Text));
+                int codSearch = Convert.ToInt32(searchLocacaoCod.Text);
+                query = query.Where(n => n.Codigo == codSearch);
             }
 
             List<Locacao> resultado = query.ToList();
@@ -272,16 +300,57 @@ namespace Sistema_Locadora.Telas
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            locacaoDataGridView.DataSource = Busca();
+            List<Locacao> locacaos = Busca();
+
+            LocadoraContext db = new LocadoraContext();
+
+            var resultado = from locacao in locacaos
+                            join filme in db.Filmes on locacao.FilmeId equals filme.Codigo
+                            join cliente in db.Clientes on locacao.ClienteId equals cliente.Codigo
+                            join colaborador in db.Login on locacao.ColaboradorId equals colaborador.Codigo
+                            select new
+                            {
+                                Codigo = locacao.Codigo,
+                                Filme = filme.Titulo,
+                                Cliente = cliente.Nome,
+                                Colaborador = colaborador.Nome,
+                                Data_de_Retirada = locacao.DataRetirada,
+                                Data_Prevista_Devolucao = locacao.DataPrevDevolucao,
+                                Devolucao = locacao.Devolucao,
+                                Status = locacao.Status
+                            };
+
+            locacaoDataGridView.DataSource = resultado.ToList();
         }
+
+        private void filtroCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool filmeRetornou(Locacao locSelecionada)
+        {
+            FilmeCrud filmeCrud = new FilmeCrud();
+            Filme locFilme = filmeCrud.ObterFilme(locSelecionada.FilmeId);
+            //
+            if (locFilme.Locado < 1)
+            {
+                return false;
+            }
+            else
+            {
+                Filme novoFilme = locFilme;
+                novoFilme.Quantidade = locFilme.Quantidade + 1;
+                novoFilme.Locado = locFilme.Locado - 1;
+
+                return (filmeCrud.Atualizar(locFilme, novoFilme)) ? true : false;
+            }
+        }
+
+        private void locacaoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }
-/*private List<Locacao> Busca()
-{
-LocadoraContext db = new LocadoraContext();
-IQueryable<Locacao> query = db.Locacoes;
-
-
-}*/
-
-
